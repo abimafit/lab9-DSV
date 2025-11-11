@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Promedios</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Calculadora de Promedios</h1>
+            <p>Ingresa las notas de tus estudiantes y calcula sus promedios automáticamente</p>
+        </div>
+        
+        <div class="card" id="configuracion">
+            <h2>Configuración Inicial</h2>
+            <div class="input-group">
+                <label for="cantidadEstudiantes">Cantidad de Estudiantes:</label>
+                <input type="number" id="cantidadEstudiantes" min="1" max="50" placeholder="Ej: 3">
+            </div>
+            <button id="btnIniciar" class="btn-primary">Comenzar Ingreso de Notas</button>
+        </div>
+        
+        <div class="card hidden" id="ingresoNotas">
+            <h2 id="tituloEstudiante">Estudiante 1</h2>
+            <div class="notas-container">
+                <div class="nota-input">
+                    <label for="nota1">Nota 1:</label>
+                    <input type="number" id="nota1" min="0" max="100" placeholder="0-100">
+                </div>
+                <div class="nota-input">
+                    <label for="nota2">Nota 2:</label>
+                    <input type="number" id="nota2" min="0" max="100" placeholder="0-100">
+                </div>
+            </div>
+            <button id="btnCalcular" class="btn-primary">Calcular Promedio</button>
+        </div>
+        
+        <div class="card hidden" id="resultadosFinales">
+            <h2>📊 Resultados Finales</h2>
+            <div id="listaResultados"></div>
+            <button id="btnReiniciar" class="btn-secondary">Nuevo Cálculo</button>
+        </div>
+
+        <!-- Botón de regreso al inicio -->
+        <div class="footer-actions">
+            <a href="index.html" class="btn-back">← Volver al Inicio</a>
+        </div>
+    </div>
+
+    <!-- Modal para mostrar resultados individuales -->
+    <div id="modalResultado" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>✅ Promedio Calculado</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="resultadoIndividual"></div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnSiguiente" class="btn-primary">Siguiente Estudiante</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
