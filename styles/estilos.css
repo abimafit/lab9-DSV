@@ -537,4 +537,53 @@ input[type="number"]:focus {
     text-decoration: none;  
     margin-top: 20px;
     display: flex;
+
         }
+
+/* Botón de regreso - AHORA EN EL FOOTER */
+.footer-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 25px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-back:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    color: white;
+    text-decoration: none;
+}
+
+/* Ajuste del header principal */
+.header {
+    margin-bottom: 30px;
+}
+
+/* Responsive para el botón de regreso */
+@media (max-width: 768px) {
+    .footer-actions {
+        justify-content: center;
+    }
+    
+    .btn-back {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+}
