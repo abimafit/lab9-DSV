@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problema 2</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <H1>DIA DE LA SEMANA</H1>
+    <p>Ingrese un número del <strong>1 al 7</strong> y le diremos qué día le corresponde a ese número</p>
+
+    <form class="cheto">
+        <span class="papa">
+            <label for="agua" class="vaca">Número</label><br>
+            <input type="number" name="agua" id="agua" placeholder="Ingrese un numero"/>
+        </span>
+        <input class="submit" type="submit" value="BUSCAR" />
+        <p class="Dia"></p>
+    </form>
+    <a href="index.html">Regresar a menu</a>
+
+    
+    <script>
+        const form = document.querySelector('.form');
+        const inputNumber = document.getElementById('agua');
+        const diaDisplay = document.querySelector('.Dia');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const numero = parseInt(inputNumber.value);
+            let dia;
+
+            switch (numero) {
+                case 1:
+                    dia = 'Es Lunes';
+                    break;
+                case 2:
+                    dia = 'Es Martes';
+                    break;
+                case 3:
+                    dia = 'Es Miércoles';
+                    break;
+                case 4:
+                    dia = 'Es Jueves';
+                    break;
+                case 5:
+                    dia = 'Es Viernes';
+                    break;
+                case 6:
+                    dia = 'Es Sábado';
+                    break;
+                case 7:
+                    dia = 'Es Domingo';
+                    break;
+                default:
+                    dia = 'Dije del 1 al 7, sea serio😒';
+            }
+
+            diaDisplay.textContent = dia;
+        });
+    </script>
+</body>
+</html>
