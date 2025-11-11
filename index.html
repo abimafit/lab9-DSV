@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio 9: JS-básico2 - Desarrollo de Software V</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #2d1bcf, #2d92fd);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Estilos del encabezado */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #3498db;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #7f8c8d;
+        }
+
+        .university-info {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        /* Estilos de la sección de problemas */
+        .problems-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .problem-card {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        .problem-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .problem-card p {
+            margin-bottom: 20px;
+            flex-grow: 1;
+            color: #555;
+        }
+
+        .problem-card .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: auto;
+        }
+
+        .problem-card .btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        .problem-card.problem-1 .btn {
+            background-color: #27ae60;
+        }
+
+        .problem-card.problem-1 .btn:hover {
+            background-color: #219653;
+        }
+
+        .problem-card.problem-2 .btn {
+            background-color: #e74c3c;
+        }
+
+        .problem-card.problem-2 .btn:hover {
+            background-color: #c0392b;
+        }
+
+        .problem-card.problem-3 .btn {
+            background-color: #9b59b6;
+        }
+
+        .problem-card.problem-3 .btn:hover {
+            background-color: #8e44ad;
+        }
+
+        .problem-card.problem-4 .btn {
+            background-color: #f39c12;
+        }
+
+        .problem-card.problem-4 .btn:hover {
+            background-color: #d35400;
+        }
+
+        /* Estilos de la información del estudiante */
+        .student-info {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            margin-bottom: 40px;
+        }
+
+        .student-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .student-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .info-item {
+            margin-bottom: 10px;
+        }
+
+        .info-item strong {
+            color: #2c3e50;
+        }
+
+        /* Estilos del pie de página */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background-color: rgba(44, 62, 80, 0.9);
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .problems-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .problem-card {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            header {
+                padding: 20px;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .problem-card {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Laboratorio 9: JS-básico2</h1>
+            <h2>Desarrollo de Software V (8400) - 2025</h2>
+            <p>Universidad Tecnológica de Panamá</p>
+            <p>Facultad de Ingeniería de Sistemas</p>
+            <p>Ing. Alonso González</p>
+            
+            <div class="university-info">
+                <p><strong>Modalidad:</strong> Grupal</p>
+                <p><strong>Fecha de entrega:</strong> 11 de noviembre de 2025</p>
+            </div>
+        </header>
+
+        <section class="problems-section">
+            <div class="problem-card problem-1">
+                <h3>Problema 1</h3>
+                <p><strong>Promedio de calificaciones con escala en letras</strong></p>
+                <p>Calcula el promedio de tres notas y muestra el equivalente en letras (A, B, C, D o F) según la escala basada en el rango de 0 a 100.</p>
+                <a href="problema1/index.html" class="btn">Ver Solución</a>
+            </div>
+
+            <div class="problem-card problem-2">
+                <h3>Problema 2</h3>
+                <p><strong>Identificación del día de la semana</strong></p>
+                <p>Solicita un número del 1 al 7 y muestra el día de la semana correspondiente. Si el número está fuera del rango, muestra un mensaje de error.</p>
+                <a href="problema2/index.html" class="btn">Ver Solución</a>
+            </div>
+
+            <div class="problem-card problem-3">
+                <h3>Problema 3</h3>
+                <p><strong>Total de compra en supermercado</strong></p>
+                <p>Solicita la cantidad de productos diferentes y luego permite ingresar el precio de cada producto. Calcula y muestra el total a pagar, sin considerar impuestos.</p>
+                <a href="problema3.html" class="btn">Ver Solución</a>
+            </div>
+
+            <div class="problem-card problem-4">
+                <h3>Problema 4</h3>
+                <p><strong>Promedio de notas para N estudiantes</strong></p>
+                <p>Calcula el promedio de dos notas para una cantidad N de estudiantes ingresada por el usuario. Muestra el promedio obtenido por cada estudiante.</p>
+                <a href="problema4/index.html" class="btn">Ver Solución</a>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2025 - Universidad Tecnológica de Panamá</p>
+            <p>Facultad de Ingeniería de Sistemas - Desarrollo de Software V (8400)</p>
+            <p>Todos los derechos reservados</p>
+        </footer>
+    </div>
+</body>
+</html>
